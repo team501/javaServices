@@ -1,0 +1,119 @@
+package com.springboot.jpa.postgres.rest.model;
+
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "chute_summary")
+public class ChuteSummary{
+	@Id
+    @GeneratedValue(generator = "SampleData_generator")
+    @SequenceGenerator(
+            name = "SampleData_generator",
+            sequenceName = "SampleData_sequence",
+            initialValue = 100
+    )
+    private Long id;
+	
+	@Column(columnDefinition = "created_ts")
+	private Timestamp createdTs;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public Timestamp getCreatedTs() {
+		return createdTs;
+	}
+
+	public void setCreatedTs(Timestamp createdTs) {
+		this.createdTs = createdTs;
+	}
+
+	public Integer getChuteFull() {
+		return chuteFull;
+	}
+
+	public void setChuteFull(Integer chuteFull) {
+		this.chuteFull = chuteFull;
+	}
+
+	public Integer getChuteEmpty() {
+		return empty;
+	}
+
+	public void setChuteEmpty(Integer chuteEmpty) {
+		this.empty = chuteEmpty;
+	}
+
+	public Integer getChuteError() {
+		return error;
+	}
+
+	public void setChuteError(Integer chuteError) {
+		this.error = chuteError;
+	}
+
+	public Integer getChuteDisabled() {
+		return disabled;
+	}
+
+	public void setChuteDisabled(Integer chuteDisabled) {
+		this.disabled = chuteDisabled;
+	}
+
+	public Integer getChutesAssigned() {
+		return assigned;
+	}
+
+	public void setChutesAssigned(Integer chutesAssigned) {
+		this.assigned = chutesAssigned;
+	}
+
+	public Integer getChutesUnassigned() {
+		return notassigned;
+	}
+
+	public void setChutesUnassigned(Integer chutesUnassigned) {
+		this.notassigned = chutesUnassigned;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	@Column(columnDefinition = "chute_full")
+	private Integer chuteFull;
+	
+	@Column(columnDefinition = "empty")
+	private Integer empty;
+	
+	@Column(columnDefinition = "error")
+	private Integer error;
+	
+	@Column(columnDefinition = "disabled")
+	private Integer disabled;
+	
+	@Column(columnDefinition = "assigned")
+	private Integer assigned;
+	
+	@Column(columnDefinition = "notassigned")
+	private Integer notassigned;
+	
+	@Column(columnDefinition = "userid")
+	private String userid;
+}
