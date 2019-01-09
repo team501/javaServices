@@ -15,6 +15,14 @@ public class ChuteSummaryServiceImpl implements RetriveChuteSummary{
 
 	@Override
 	public ChuteSummary getChuteSummary(String userId) throws Exception {
-		return chuteSummaryRepository.findByUserid(userId);
+		ChuteSummary chuteSummary = chuteSummaryRepository.findByUserid(userId);
+		Integer chuteUtilization = chuteSummary.getDisabled()+chuteSummary.getChuteFull()+chuteSummary.getEmpty()+chuteSummary.getError();
+		chuteSummary.setFullPercentage(chuteSummary.getChuteFull()*100/chuteUtilization);
+		chuteSummary.setEmptyPercentage(chuteSummary.getEmpty()*100/chuteUtilization);
+		chuteSummary.setErrorPercentage(chuteSummary.getError()*100/chuteUtilization);
+		chuteSummary.setDisabledPercentage(chuteSummary.getDisabled()*100/chuteUtilization);
+		chuteSummary.setAssignedPercentage(chuteSummary.getAssigned()*100/chuteUtilization);
+		chuteSummary.setUtilization(chuteUtilization);
+		return chuteSummary;
 	}
 }

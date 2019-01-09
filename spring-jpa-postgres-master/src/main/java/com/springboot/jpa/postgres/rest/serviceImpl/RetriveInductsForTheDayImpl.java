@@ -1,6 +1,7 @@
 package com.springboot.jpa.postgres.rest.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,20 +18,27 @@ public class RetriveInductsForTheDayImpl implements RetriveInductsForTheDay{
     private InductsPerDayRepository inductsPerDayRepository;
 
 	@Override
-	public InductsForTheDayOutput getInductsForTheDay(String userId) throws Exception {
-		List<InductsForTheDay> list = inductsPerDayRepository.findByUserid(userId);
+	public InductsForTheDayOutput getInductsForTheDay(String userId, Optional<String> sorterid) throws Exception {
+		List<InductsForTheDay> list;
+		if(sorterid.isPresent()) {
+			list = inductsPerDayRepository.findByUseridAndSorterid(userId,sorterid.get());
+		}else {
+			list = inductsPerDayRepository.findByUserid(userId);
+		}
+		
 		InductsForTheDayOutput inductsForTheDayOutput = new InductsForTheDayOutput();
-		
-		Integer currentValue = list.get(0).getCurr_value();
-		
-		Integer goalValue = list.get(0).getGoal();
-		
-		double percentValue = ((currentValue/(double)goalValue)*100);
-		
-		inductsForTheDayOutput.setInductsForTheDayList(list);
-		inductsForTheDayOutput.setCurrentValue(currentValue);
-		inductsForTheDayOutput.setGoalValue(goalValue);
-		inductsForTheDayOutput.setPercentValue(percentValue);
+		if(!list.isEmpty()) {
+			Integer currentValue = list.get(0).getCurr_value();
+			
+			Integer goalValue = list.get(0).getGoal();
+			
+			double percentValue = ((currentValue/(double)goalValue)*100);
+			
+			inductsForTheDayOutput.setInductsForTheDayList(list);
+			inductsForTheDayOutput.setCurrentValue(currentValue);
+			inductsForTheDayOutput.setGoalValue(goalValue);
+			inductsForTheDayOutput.setPercentValue(percentValue);
+		}
 		return inductsForTheDayOutput;
 	}
 }

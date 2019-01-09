@@ -16,7 +16,12 @@ public class WaveStatusTodayServiceImpl implements RetriveWaveStatusToday{
 	@Override
 	public WaveStatusToday getWaveStatusToday(String userid) throws Exception {
 		WaveStatusToday  waveStatusToday= waveStatusTodayRepository.findByUserid(userid);
-		waveStatusToday.setUnits(waveStatusToday.getAllocated()+waveStatusToday.getRemaining()+waveStatusToday.getSorted());
+		
+		Integer units = waveStatusToday.getAllocated()+waveStatusToday.getRemaining()+waveStatusToday.getSorted();
+		waveStatusToday.setUnits(units);
+		waveStatusToday.setAllocatedPercentage((waveStatusToday.getAllocated()*100)/units);
+		waveStatusToday.setSortedPercentage((waveStatusToday.getSorted()*100)/units);
+		waveStatusToday.setRemainingPercentage((waveStatusToday.getRemaining()*100)/units);
 		return waveStatusToday;
 	}
 }

@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "chute_summary")
 public class ChuteSummary{
@@ -23,78 +26,6 @@ public class ChuteSummary{
 	
 	@Column(columnDefinition = "created_ts")
 	private Timestamp createdTs;
-	
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getUserid() {
-		return userid;
-	}
-
-	public Timestamp getCreatedTs() {
-		return createdTs;
-	}
-
-	public void setCreatedTs(Timestamp createdTs) {
-		this.createdTs = createdTs;
-	}
-
-	public Integer getChuteFull() {
-		return chuteFull;
-	}
-
-	public void setChuteFull(Integer chuteFull) {
-		this.chuteFull = chuteFull;
-	}
-
-	public Integer getChuteEmpty() {
-		return empty;
-	}
-
-	public void setChuteEmpty(Integer chuteEmpty) {
-		this.empty = chuteEmpty;
-	}
-
-	public Integer getChuteError() {
-		return error;
-	}
-
-	public void setChuteError(Integer chuteError) {
-		this.error = chuteError;
-	}
-
-	public Integer getChuteDisabled() {
-		return disabled;
-	}
-
-	public void setChuteDisabled(Integer chuteDisabled) {
-		this.disabled = chuteDisabled;
-	}
-
-	public Integer getChutesAssigned() {
-		return assigned;
-	}
-
-	public void setChutesAssigned(Integer chutesAssigned) {
-		this.assigned = chutesAssigned;
-	}
-
-	public Integer getChutesUnassigned() {
-		return notassigned;
-	}
-
-	public void setChutesUnassigned(Integer chutesUnassigned) {
-		this.notassigned = chutesUnassigned;
-	}
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
 
 	@Column(columnDefinition = "chute_full")
 	private Integer chuteFull;
@@ -116,4 +47,16 @@ public class ChuteSummary{
 	
 	@Column(columnDefinition = "userid")
 	private String userid;
+	
+	private Integer fullPercentage;
+	
+	private Integer emptyPercentage;
+	
+	private Integer errorPercentage;
+	
+	private Integer disabledPercentage;
+	
+	private Integer assignedPercentage;
+	
+	private Integer utilization;
 }

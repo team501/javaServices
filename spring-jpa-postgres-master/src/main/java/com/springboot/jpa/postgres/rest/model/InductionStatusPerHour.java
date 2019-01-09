@@ -7,6 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "induction_status_per_hour")
 public class InductionStatusPerHour{
@@ -34,54 +37,4 @@ public class InductionStatusPerHour{
 	
 	@Column(columnDefinition = "userid")
 	private String userid;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Integer getPeak() {
-		return peak;
-	}
-
-	public void setPeak(Integer peak) {
-		this.peak = peak;
-	}
-
-	public Integer getSorted() {
-		return average;
-	}
-
-	public void setSorted(Integer average) {
-		this.average = average;
-	}
-
-	public Integer getRecric() {
-		return recric;
-	}
-
-	public void setRecric(Integer recric) {
-		this.recric = recric;
-	}
-
-	public Integer getMinimum() {
-		return minimum;
-	}
-
-	public void setMinimum(Integer minimum) {
-		this.minimum = minimum;
-	}
-
-	public String getUserid() {
-		return userid;
-	}
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-	
-	
 }

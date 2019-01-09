@@ -9,65 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "chute_details")
 public class ChuteDetails{
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Integer getChute_nbr() {
-		return chute_nbr;
-	}
-
-	public void setChute_nbr(Integer chute_nbr) {
-		this.chute_nbr = chute_nbr;
-	}
-
-	public String getProduct_full() {
-		return product_full;
-	}
-
-	public void setProduct_full(String product_full) {
-		this.product_full = product_full;
-	}
-
-	public String getProduct_disabled() {
-		return product_disabled;
-	}
-
-	public void setProduct_disabled(String product_disabled) {
-		this.product_disabled = product_disabled;
-	}
-
-	public String getDuration() {
-		return duration;
-	}
-
-	public void setDuration(String duration) {
-		this.duration = duration;
-	}
-
-	public Timestamp getCreated_ts() {
-		return created_ts;
-	}
-
-	public void setCreated_ts(Timestamp created_ts) {
-		this.created_ts = created_ts;
-	}
-
-	public String getUserid() {
-		return userid;
-	}
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-
 	@Id
     @GeneratedValue(generator = "SampleData_generator")
     @SequenceGenerator(

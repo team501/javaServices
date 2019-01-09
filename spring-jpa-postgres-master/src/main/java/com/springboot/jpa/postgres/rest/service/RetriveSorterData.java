@@ -4,4 +4,6 @@ import com.springboot.jpa.postgres.rest.model.SorterData;
 
 public interface RetriveSorterData {
 	public SorterData getSorterData(String userId) throws Exception;
+
+	public SorterData getSorterDataByUserIdAndSorterId(String userId, String sorterId) throws Exception;
 }

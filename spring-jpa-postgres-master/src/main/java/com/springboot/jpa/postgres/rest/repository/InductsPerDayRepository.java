@@ -11,4 +11,6 @@ import java.util.List;
 public interface InductsPerDayRepository extends JpaRepository<InductsForTheDay, Long> {
 	
 	List<InductsForTheDay> findByUserid(String userid);
+	
+	List<InductsForTheDay> findByUseridAndSorterid(String userid,String sortrid);
 }
