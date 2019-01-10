@@ -48,6 +48,9 @@ public class ChuteSummary{
 	@Column(columnDefinition = "userid")
 	private String userid;
 	
+	@Column(columnDefinition = "sorterid")
+	private String sorterid;
+	
 	private Integer fullPercentage;
 	
 	private Integer emptyPercentage;

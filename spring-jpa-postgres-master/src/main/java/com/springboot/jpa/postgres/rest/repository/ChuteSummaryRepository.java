@@ -8,5 +8,5 @@ import com.springboot.jpa.postgres.rest.model.ChuteSummary;
 @Repository
 public interface ChuteSummaryRepository extends JpaRepository<ChuteSummary, Long> {
 	
-	ChuteSummary findByUserid(String userid);
+	ChuteSummary findByUseridAndSorterid(String userid, String sortid);
 }

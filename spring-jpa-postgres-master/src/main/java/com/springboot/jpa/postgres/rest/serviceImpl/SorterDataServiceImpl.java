@@ -1,5 +1,8 @@
 package com.springboot.jpa.postgres.rest.serviceImpl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,24 +17,28 @@ public class SorterDataServiceImpl implements RetriveSorterData{
     private SorterDataRepository sorterDataRepository;
 
 	@Override
-	public SorterData getSorterData(String userId) throws Exception {
-		SorterData sorterData= sorterDataRepository.findByUserid(userId);
-		
-		sorterData.setAssignedPercentage(80);
-		sorterData.setInductsLastHourPercentage(4000*100/5000);
-		sorterData.setSortsPercentage(40);
-		sorterData.setSorterFullPercentage(50);
-		return sorterData;
+	public List<SorterData> getSorterData(String userId) throws Exception {
+		List<SorterData> sorterData= sorterDataRepository.findByUserid(userId);
+				
+		return sorterData.stream().map(mapper -> {
+			mapper.setAssignedPercentage(80);
+			mapper.setInductsLastHourPercentage(4000*100/5000);
+			mapper.setSortsPercentage(40);
+			mapper.setSorterFullPercentage(50);
+			return mapper;
+		}).collect(Collectors.toList());
 	}
 	
 	@Override
-	public SorterData getSorterDataByUserIdAndSorterId(String userId, String sorterId) throws Exception {
-		SorterData sorterData= sorterDataRepository.findByUseridAndSorterId(userId,sorterId);
+	public  List<SorterData> getSorterDataByUserIdAndSorterId(String userId, String sorterId) throws Exception {
+		List<SorterData> sorterData= sorterDataRepository.findByUseridAndSorterId(userId,sorterId);
 		
-		sorterData.setAssignedPercentage(80);
-		sorterData.setInductsLastHourPercentage(4000*100/5000);
-		sorterData.setSortsPercentage(40);
-		sorterData.setSorterFullPercentage(50);
-		return sorterData;
+		return sorterData.stream().map(mapper -> {
+			mapper.setAssignedPercentage(80);
+			mapper.setInductsLastHourPercentage(4000*100/5000);
+			mapper.setSortsPercentage(40);
+			mapper.setSorterFullPercentage(50);
+			return mapper;
+		}).collect(Collectors.toList());
 	}
 }

@@ -37,4 +37,7 @@ public class InductionStatusPerHour{
 	
 	@Column(columnDefinition = "userid")
 	private String userid;
+	
+	@Column(columnDefinition = "sorterid")
+	private String sorterid;
 }
