@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface InductsPerDayRepository extends JpaRepository<InductsForTheDay, Long> {
 	
-	List<InductsForTheDay> findByUserid(String userid);
+	List<InductsForTheDay> findFirst5ByUserid(String userid);
 	
-	List<InductsForTheDay> findByUseridAndSorterid(String userid,String sortrid);
+	List<InductsForTheDay> findFirst5ByUseridAndSorterid(String userid,String sortrid);
 }

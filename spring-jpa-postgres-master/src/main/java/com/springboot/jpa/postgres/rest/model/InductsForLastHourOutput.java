@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class InductsForLastHourOutput{
-	private List<InductsForLastHour> inductsForTheDayList;
+	private List<InductsForLastHour> inductsForLastHour;
 
 	private double percentValue;
 	

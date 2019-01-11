@@ -21,23 +21,23 @@ public class RetriveInductsForLastHourImpl implements RetriveInductsForLastHour{
 	public InductsForLastHourOutput getInductsForLastHour(String userId, Optional<String> sorterId) throws Exception {
 		List<InductsForLastHour> list;
 		if(sorterId.isPresent()) {
-			list = inductsPerLastHourRepository.findByUseridAndSorterid(userId,sorterId.get());
+			list = inductsPerLastHourRepository.findFirst5ByUseridAndSorterid(userId,sorterId.get());
 		}else {
-			list = inductsPerLastHourRepository.findByUserid(userId);
+			list = inductsPerLastHourRepository.findFirst5ByUserid(userId);
 		}
-		InductsForLastHourOutput inductsForTheDayOutput = new InductsForLastHourOutput();
+		InductsForLastHourOutput inductsForlastHour = new InductsForLastHourOutput();
 		if(!list.isEmpty()) {
-			Integer currentValue = list.get(0).getCurrValue();
+			int goalSumVal= list.stream().mapToInt(obj->obj.getGoal()).sum();
 			
-			Integer goalValue = list.get(0).getGoal();
+			int currVal= list.stream().mapToInt(obj->obj.getCurrValue()).sum();
 			
-			double percentValue = ((currentValue/(double)goalValue)*100);
+			double percentValue = ((currVal/(double)goalSumVal)*100);
 			
-			inductsForTheDayOutput.setInductsForTheDayList(list);
-			inductsForTheDayOutput.setCurrentValue(currentValue);
-			inductsForTheDayOutput.setGoalValue(goalValue);
-			inductsForTheDayOutput.setPercentValue(percentValue);
+			inductsForlastHour.setInductsForLastHour(list);
+			inductsForlastHour.setCurrentValue(currVal);
+			inductsForlastHour.setGoalValue(goalSumVal);
+			inductsForlastHour.setPercentValue(percentValue);
 		}
-		return inductsForTheDayOutput;
+		return inductsForlastHour;
 	}
 }
