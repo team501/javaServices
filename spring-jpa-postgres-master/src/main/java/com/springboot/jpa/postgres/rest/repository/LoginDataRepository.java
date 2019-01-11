@@ -8,7 +8,7 @@ import com.springboot.jpa.postgres.rest.model.LoginData;
 @Repository
 public interface LoginDataRepository extends JpaRepository<LoginData, Long> {
 	
-	LoginData findByUsername(String username);
+	LoginData findByUsernameAndPassword(String username, String password);
 	
 	LoginData save(LoginData loginData);
 }

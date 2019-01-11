@@ -14,8 +14,8 @@ public class LoginDataServiceImpl implements RetriveLoginData{
     private LoginDataRepository loginDataRepository;
 
 	@Override
-	public LoginData getLoginData(String userid) throws Exception {
-		return loginDataRepository.findByUsername(userid);
+	public LoginData getLoginData(String userid, String password) throws Exception {
+		return loginDataRepository.findByUsernameAndPassword(userid, password);
 	}
 
 	@Override

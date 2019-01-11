@@ -21,18 +21,13 @@ public class LoginDataController {
     @Autowired
     private RetriveLoginData letriveLoginData;
     
-    @GetMapping("/login/{username}")
-    public LoginData getLoginDataByUserName(@PathVariable String username) throws Exception {
-    	return letriveLoginData.getLoginData(username);
-    }
-    
     @PostMapping("/login")
-    public CreateLoginDataOutput createLoginData(@Valid @RequestBody LoginData loginData) throws Exception {
+    public CreateLoginDataOutput getLoginData(@Valid @RequestBody LoginData loginData) throws Exception {
     	CreateLoginDataOutput createLoginDataOutput = new CreateLoginDataOutput();
-    	LoginData data = letriveLoginData.createLoginData(loginData);
+    	LoginData data = letriveLoginData.getLoginData(loginData.getUsername(), loginData.getPassword());
     	if (data !=null && (data.getUsername().equalsIgnoreCase("user1") ||
     						data.getUsername().equalsIgnoreCase("user2"))) {
-    		createLoginDataOutput.setReturnMessage("Create user "+data.getUsername()+" Successful!!");
+    		createLoginDataOutput.setReturnMessage("verified user "+data.getUsername()+" Successful!!");
     		createLoginDataOutput.setUsername(data.getUsername());
     	}
     	else
