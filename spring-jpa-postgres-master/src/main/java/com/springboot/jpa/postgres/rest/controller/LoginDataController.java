@@ -25,8 +25,7 @@ public class LoginDataController {
     public CreateLoginDataOutput getLoginData(@Valid @RequestBody LoginData loginData) throws Exception {
     	CreateLoginDataOutput createLoginDataOutput = new CreateLoginDataOutput();
     	LoginData data = letriveLoginData.getLoginData(loginData.getUsername(), loginData.getPassword());
-    	if (data !=null && (data.getUsername().equalsIgnoreCase("user1") ||
-    						data.getUsername().equalsIgnoreCase("user2"))) {
+    	if (data !=null ) {
     		createLoginDataOutput.setReturnMessage("verified user "+data.getUsername()+" Successful!!");
     		createLoginDataOutput.setUsername(data.getUsername());
     	}
