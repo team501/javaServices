@@ -16,7 +16,7 @@ public interface InductsPerLastHourRepository extends JpaRepository<InductsForLa
 	
 	List<InductsForLastHour> findFirst5ByUseridAndSorteridOrderByCurrentHourDesc(String userid,String sorterid);
 	
-	@Query("Select i from InductsForLastHour i where userid=:userid and currentHour = (select max(currentHour) from InductsForLastHour)")
+	@Query("Select i from InductsForLastHour i where userid=:userid and currentHour = (select max(currentHour) from InductsForLastHour i1 where i1.userid=:userid)")
 	List<InductsForLastHour> findByUseridOrderByCurrentHourDesc(@Param("userid") String userid);
 	
 	List<InductsForLastHour> findFirst1ByUseridAndSorteridOrderByCurrentHourDesc(String userid,String sorterid);

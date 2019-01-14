@@ -16,7 +16,7 @@ public interface InductsPerDayRepository extends JpaRepository<InductsForTheDay,
 	
 	List<InductsForTheDay> findFirst5ByUseridAndSorteridOrderByCurrentDtDesc(String userid,String sortrid);
 	
-	@Query("Select i from InductsForTheDay i where userid=:userid and currentDt = (select max(currentDt) from InductsForTheDay)")
+	@Query("Select i from InductsForTheDay i where userid=:userid and currentDt = (select max(currentDt) from InductsForTheDay i1 where i1.userid=:userid)")
 	List<InductsForTheDay> findByUseridOrderByCurrentDtDesc(@Param("userid") String userid);
 	
 	//@Query("Select * from Inducts_for_the_day where userid=:userid and sorterid=:sorterid and current_dt = (select max(current_dt) from Inducts_for_the_day")
