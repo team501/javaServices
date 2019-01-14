@@ -31,7 +31,7 @@ public class RetriveInductsForLastHourImpl implements RetriveInductsForLastHour{
 			
 			int currVal= list.stream().mapToInt(obj->obj.getCurrValue()).sum();
 			
-			double percentValue = ((currVal/(double)goalSumVal)*100);
+			Integer percentValue = (int) Math.round( ((currVal/(double)goalSumVal)*100));
 			
 			inductsForlastHour.setInductsForLastHour(list);
 			inductsForlastHour.setCurrentValue(currVal);

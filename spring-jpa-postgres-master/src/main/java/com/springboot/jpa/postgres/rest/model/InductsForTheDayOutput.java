@@ -7,7 +7,7 @@ import lombok.Data;
 public class InductsForTheDayOutput{
 	private List<InductsForTheDay> inductsForTheDayList;
 	
-	private double percentValue;
+	private Integer percentValue;
 	
 	private Integer currentValue;
 	

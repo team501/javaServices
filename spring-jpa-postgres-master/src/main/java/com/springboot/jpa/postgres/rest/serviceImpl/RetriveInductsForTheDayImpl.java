@@ -33,7 +33,7 @@ public class RetriveInductsForTheDayImpl implements RetriveInductsForTheDay{
 			
 			int currVal= list.stream().mapToInt(obj->obj.getCurr_value()).sum();
 			
-			double percentValue = ((currVal/(double)goalSumVal)*100);
+			Integer percentValue = (int) Math.round(((currVal/(double)goalSumVal)*100));
 			
 			inductsForTheDayOutput.setInductsForTheDayList(list);
 			inductsForTheDayOutput.setCurrentValue(currVal);

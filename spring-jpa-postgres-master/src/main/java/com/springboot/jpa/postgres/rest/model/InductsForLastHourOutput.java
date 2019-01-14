@@ -8,7 +8,7 @@ import lombok.Data;
 public class InductsForLastHourOutput{
 	private List<InductsForLastHour> inductsForLastHour;
 
-	private double percentValue;
+	private Integer percentValue;
 	
 	private Integer currentValue;
 	
