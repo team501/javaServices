@@ -20,16 +20,19 @@ public class RetriveInductsForLastHourImpl implements RetriveInductsForLastHour{
 	@Override
 	public InductsForLastHourOutput getInductsForLastHour(String userId, Optional<String> sorterId) throws Exception {
 		List<InductsForLastHour> list;
+		List<InductsForLastHour> inductsForLastHourList;
 		if(sorterId.isPresent()) {
-			list = inductsPerLastHourRepository.findFirst5ByUseridAndSorterid(userId,sorterId.get());
+			inductsForLastHourList = inductsPerLastHourRepository.findFirst1ByUseridAndSorteridOrderByCurrentHourDesc(userId, sorterId.get());
+			list = inductsPerLastHourRepository.findFirst5ByUseridAndSorteridOrderByCurrentHourDesc(userId,sorterId.get());
 		}else {
-			list = inductsPerLastHourRepository.findFirst5ByUserid(userId);
+			inductsForLastHourList = inductsPerLastHourRepository.findByUseridOrderByCurrentHourDesc(userId);
+			list = inductsPerLastHourRepository.findFirst5ByUseridOrderByCurrentHourDesc(userId);
 		}
 		InductsForLastHourOutput inductsForlastHour = new InductsForLastHourOutput();
 		if(!list.isEmpty()) {
-			int goalSumVal= list.stream().mapToInt(obj->obj.getGoal()).sum();
+			int goalSumVal= inductsForLastHourList.stream().mapToInt(obj->obj.getGoal()).sum();
 			
-			int currVal= list.stream().mapToInt(obj->obj.getCurrValue()).sum();
+			int currVal= inductsForLastHourList.stream().mapToInt(obj->obj.getCurrValue()).sum();
 			
 			Integer percentValue = (int) Math.round( ((currVal/(double)goalSumVal)*100));
 			

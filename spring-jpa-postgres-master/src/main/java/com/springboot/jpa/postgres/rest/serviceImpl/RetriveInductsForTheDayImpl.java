@@ -21,17 +21,20 @@ public class RetriveInductsForTheDayImpl implements RetriveInductsForTheDay{
 	@Override
 	public InductsForTheDayOutput getInductsForTheDay(String userId, Optional<String> sorterid) throws Exception {
 		List<InductsForTheDay> list;
+		List<InductsForTheDay> currVallist;
 		if(sorterid.isPresent()) {
-			list = inductsPerDayRepository.findFirst5ByUseridAndSorterid(userId,sorterid.get());
+			currVallist = inductsPerDayRepository.findFirst1ByUseridAndSorteridOrderByCurrentDtDesc(userId,sorterid.get());
+			list = inductsPerDayRepository.findFirst5ByUseridAndSorteridOrderByCurrentDtDesc(userId,sorterid.get());
 		}else {
-			list = inductsPerDayRepository.findFirst5ByUserid(userId);
+			currVallist = inductsPerDayRepository.findByUseridOrderByCurrentDtDesc(userId);
+			list = inductsPerDayRepository.findFirst5ByUseridOrderByCurrentDtDesc(userId);
 		}
 		
 		InductsForTheDayOutput inductsForTheDayOutput = new InductsForTheDayOutput();
 		if(!list.isEmpty()) {
-			int goalSumVal= list.stream().mapToInt(obj->obj.getGoal()).sum();
+			int goalSumVal= currVallist.stream().mapToInt(obj->obj.getGoal()).sum();
 			
-			int currVal= list.stream().mapToInt(obj->obj.getCurr_value()).sum();
+			int currVal= currVallist.stream().mapToInt(obj->obj.getCurr_value()).sum();
 			
 			Integer percentValue = (int) Math.round(((currVal/(double)goalSumVal)*100));
 			
