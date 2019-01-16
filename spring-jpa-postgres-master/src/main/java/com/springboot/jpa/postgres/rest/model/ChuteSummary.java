@@ -25,7 +25,7 @@ public class ChuteSummary{
     private Long id;
 	
 	@Column(columnDefinition = "created_ts")
-	private Timestamp createdTs;
+	private String createdTs;
 
 	@Column(columnDefinition = "chute_full")
 	private Integer chuteFull;

@@ -1,7 +1,5 @@
 package com.springboot.jpa.postgres.rest.model;
 
-import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +35,7 @@ public class ChuteDetails{
 	private String duration;
 	
 	@Column(columnDefinition = "created_ts")
-	private Timestamp created_ts;
+	private String created_ts;
 	
 	@Column(columnDefinition = "userid")
 	private String userid;
