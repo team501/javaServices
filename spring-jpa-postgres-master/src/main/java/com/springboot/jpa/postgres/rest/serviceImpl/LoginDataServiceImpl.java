@@ -20,6 +20,6 @@ public class LoginDataServiceImpl implements RetriveLoginData{
 
 	@Override
 	public LoginData createLoginData(LoginData loginData) throws Exception {
-		return loginDataRepository.save(loginData);
+		return loginDataRepository.saveLoginInfo(loginData);
 	}
 }

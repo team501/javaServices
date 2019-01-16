@@ -10,5 +10,5 @@ public interface LoginDataRepository extends JpaRepository<LoginData, Long> {
 	
 	LoginData findByUsernameAndPassword(String username, String password);
 	
-	LoginData save(LoginData loginData);
+	LoginData saveLoginInfo(LoginData loginData);
 }
