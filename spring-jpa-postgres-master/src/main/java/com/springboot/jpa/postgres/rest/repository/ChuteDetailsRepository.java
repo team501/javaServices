@@ -10,5 +10,5 @@ import com.springboot.jpa.postgres.rest.model.ChuteDetails;
 @Repository
 public interface ChuteDetailsRepository extends JpaRepository<ChuteDetails, Long> {
 	
-	List<ChuteDetails> findByUserid(String userid);
+	List<ChuteDetails> findAll();
 }

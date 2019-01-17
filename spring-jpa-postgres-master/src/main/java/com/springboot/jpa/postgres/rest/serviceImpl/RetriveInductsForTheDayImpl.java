@@ -22,11 +22,11 @@ public class RetriveInductsForTheDayImpl implements RetriveInductsForTheDay{
 		List<InductsForTheDay> list;
 		List<InductsForTheDay> currVallist;
 		if(sorterid.isPresent()) {
-			currVallist = inductsPerDayRepository.findFirst1ByUseridAndSorteridOrderByCurrentDtDesc(userId,sorterid.get());
-			list = inductsPerDayRepository.findFirst5ByUseridAndSorteridOrderByCurrentDtDesc(userId,sorterid.get());
+			currVallist = inductsPerDayRepository.findFirst1BySorteridOrderByCurrentDtDesc(sorterid.get());
+			list = inductsPerDayRepository.findFirst5BySorteridOrderByCurrentDtDesc(sorterid.get());
 		}else {
-			currVallist = inductsPerDayRepository.findByUseridOrderByCurrentDtDesc(userId);
-			list = inductsPerDayRepository.findFirst5ByUseridOrderByCurrentDtDesc(userId);
+			currVallist = inductsPerDayRepository.findAllByOrderByCurrentDtDesc();
+			list = inductsPerDayRepository.findFirst5ByOrderByCurrentDtDesc();
 		}
 		
 		InductsForTheDayOutput inductsForTheDayOutput = new InductsForTheDayOutput();

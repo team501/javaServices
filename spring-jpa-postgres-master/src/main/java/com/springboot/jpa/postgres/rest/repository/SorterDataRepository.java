@@ -10,7 +10,7 @@ import com.springboot.jpa.postgres.rest.model.SorterData;
 @Repository
 public interface SorterDataRepository extends JpaRepository<SorterData, Long> {
 	
-	List<SorterData> findByUseridOrderBySorterId(String userid);
+	List<SorterData> findAllByOrderBySorterId();
 	
-	List<SorterData> findByUseridAndSorterIdOrderBySorterId(String userid, String sorterId);
+	List<SorterData> findBySorterIdOrderBySorterId(String sorterId);
 }

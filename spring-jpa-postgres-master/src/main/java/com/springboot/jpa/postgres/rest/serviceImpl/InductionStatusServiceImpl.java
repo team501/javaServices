@@ -17,6 +17,6 @@ public class InductionStatusServiceImpl implements RetriveInductionStatus{
 
 	@Override
 	public List<InductionStatus> getInductionStatus(String userid) {
-		return inductionStatusRepository.findByUserid(userid);
+		return inductionStatusRepository.findAll();
 	}
 }

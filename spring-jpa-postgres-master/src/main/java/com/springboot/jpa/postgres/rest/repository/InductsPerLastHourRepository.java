@@ -12,12 +12,12 @@ import com.springboot.jpa.postgres.rest.model.InductsForLastHour;
 @Repository
 public interface InductsPerLastHourRepository extends JpaRepository<InductsForLastHour, Long> {
 	
-	List<InductsForLastHour> findFirst5ByUseridOrderByCurrentHourDesc(String userid);
+	List<InductsForLastHour> findFirst5ByOrderByCurrentHourDesc();
 	
-	List<InductsForLastHour> findFirst5ByUseridAndSorteridOrderByCurrentHourDesc(String userid,String sorterid);
+	List<InductsForLastHour> findFirst5BySorteridOrderByCurrentHourDesc(String sorterid);
 	
-	@Query("Select i from InductsForLastHour i where userid=:userid and currentHour = (select max(currentHour) from InductsForLastHour i1 where i1.userid=:userid)")
-	List<InductsForLastHour> findByUseridOrderByCurrentHourDesc(@Param("userid") String userid);
+	@Query("Select i from InductsForLastHour i where currentHour = (select max(currentHour) from InductsForLastHour)")
+	List<InductsForLastHour> findByUseridOrderByCurrentHourDesc();
 	
-	List<InductsForLastHour> findFirst1ByUseridAndSorteridOrderByCurrentHourDesc(String userid,String sorterid);
+	List<InductsForLastHour> findFirst1BySorteridOrderByCurrentHourDesc(String sorterid);
 }

@@ -15,7 +15,7 @@ public class WaveStatusTodayServiceImpl implements RetriveWaveStatusToday{
 
 	@Override
 	public WaveStatusToday getWaveStatusToday(String userid) throws Exception {
-		WaveStatusToday  waveStatusToday= waveStatusTodayRepository.findByUserid(userid);
+		WaveStatusToday  waveStatusToday= waveStatusTodayRepository.findFirstBy();
 		
 		Integer remaining = waveStatusToday.getUnits() - waveStatusToday.getSorted();
 		Integer sorted = waveStatusToday.getSorted();

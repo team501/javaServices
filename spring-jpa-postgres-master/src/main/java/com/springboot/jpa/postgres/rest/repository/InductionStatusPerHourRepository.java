@@ -8,5 +8,5 @@ import com.springboot.jpa.postgres.rest.model.InductionStatusPerHour;
 @Repository
 public interface InductionStatusPerHourRepository extends JpaRepository<InductionStatusPerHour, Long> {
 	
-	InductionStatusPerHour findByUseridAndSorterid(String username, String sorterid);
+	InductionStatusPerHour findBySorterid(String sorterid);
 }

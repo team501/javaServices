@@ -17,6 +17,6 @@ public class ChuteDetailsServiceImpl implements RetriveChuteDetails{
 
 	@Override
 	public List<ChuteDetails> getChuteDetails(String userId) throws Exception {
-		return chuteDetailsRepository.findByUserid(userId);
+		return chuteDetailsRepository.findAll();
 	}
 }
