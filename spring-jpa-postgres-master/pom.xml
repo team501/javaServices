@@ -58,7 +58,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				 <configuration>
-    				<mainClass>org.springframework.boot.SpringApplication</mainClass>
+    				<mainClass>com.springboot.jpa.postgres.rest.SpringBootJPAApplication</mainClass>
  				 </configuration>
 			</plugin>
 		</plugins>
