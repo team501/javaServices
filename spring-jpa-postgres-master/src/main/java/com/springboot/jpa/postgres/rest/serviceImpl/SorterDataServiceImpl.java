@@ -18,7 +18,7 @@ public class SorterDataServiceImpl implements RetriveSorterData{
 
 	@Override
 	public List<SorterData> getSorterData(String userId) throws Exception {
-		List<SorterData> sorterData= sorterDataRepository.findByUseridOrderBySorterId(userId);
+		List<SorterData> sorterData= sorterDataRepository.findAllByOrderBySorterId();
 				
 		return sorterData.stream().map(mapper -> {
 			mapper.setAssignedPercentage(80);
@@ -31,7 +31,7 @@ public class SorterDataServiceImpl implements RetriveSorterData{
 	
 	@Override
 	public  List<SorterData> getSorterDataByUserIdAndSorterId(String userId, String sorterId) throws Exception {
-		List<SorterData> sorterData= sorterDataRepository.findByUseridAndSorterIdOrderBySorterId(userId,sorterId);
+		List<SorterData> sorterData= sorterDataRepository.findBySorterIdOrderBySorterId(sorterId);
 		
 		return sorterData.stream().map(mapper -> {
 			mapper.setAssignedPercentage(80);

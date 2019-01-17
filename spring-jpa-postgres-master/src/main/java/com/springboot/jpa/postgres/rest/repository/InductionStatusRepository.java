@@ -10,5 +10,5 @@ import com.springboot.jpa.postgres.rest.model.InductionStatus;
 @Repository
 public interface InductionStatusRepository extends JpaRepository<InductionStatus, Long> {
 	
-	List<InductionStatus> findByUserid(String userid);
+	List<InductionStatus> findAll();
 }

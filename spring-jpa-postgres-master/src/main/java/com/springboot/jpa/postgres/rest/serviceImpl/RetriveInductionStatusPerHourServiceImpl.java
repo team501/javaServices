@@ -16,6 +16,6 @@ public class RetriveInductionStatusPerHourServiceImpl implements RetriveInductio
 	
 	@Override
 	public InductionStatusPerHour getInductionStatusPerHour(String userid, String sorterid) throws Exception {
-		return inductsPerLastHourRepository.findByUseridAndSorterid(userid, sorterid);
+		return inductsPerLastHourRepository.findBySorterid(sorterid);
 	}
 }

@@ -22,11 +22,11 @@ public class RetriveInductsForLastHourImpl implements RetriveInductsForLastHour{
 		List<InductsForLastHour> list;
 		List<InductsForLastHour> inductsForLastHourList;
 		if(sorterId.isPresent()) {
-			inductsForLastHourList = inductsPerLastHourRepository.findFirst1ByUseridAndSorteridOrderByCurrentHourDesc(userId, sorterId.get());
-			list = inductsPerLastHourRepository.findFirst5ByUseridAndSorteridOrderByCurrentHourDesc(userId,sorterId.get());
+			inductsForLastHourList = inductsPerLastHourRepository.findFirst1BySorteridOrderByCurrentHourDesc(sorterId.get());
+			list = inductsPerLastHourRepository.findFirst5BySorteridOrderByCurrentHourDesc(sorterId.get());
 		}else {
-			inductsForLastHourList = inductsPerLastHourRepository.findByUseridOrderByCurrentHourDesc(userId);
-			list = inductsPerLastHourRepository.findFirst5ByUseridOrderByCurrentHourDesc(userId);
+			inductsForLastHourList = inductsPerLastHourRepository.findByUseridOrderByCurrentHourDesc();
+			list = inductsPerLastHourRepository.findFirst5ByOrderByCurrentHourDesc();
 		}
 		InductsForLastHourOutput inductsForlastHour = new InductsForLastHourOutput();
 		if(!list.isEmpty()) {

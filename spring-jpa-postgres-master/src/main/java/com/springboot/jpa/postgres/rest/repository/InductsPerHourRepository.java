@@ -10,5 +10,5 @@ import com.springboot.jpa.postgres.rest.model.InductsForLastHour;
 @Repository
 public interface InductsPerHourRepository extends JpaRepository<InductsForLastHour, Long> {
 	
-	List<InductsForLastHour> findByUserid(String username);
-}
+	List<InductsForLastHour> findAll();
+} 
